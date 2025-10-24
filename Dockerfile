@@ -13,4 +13,6 @@ RUN chmod 777 /opt
 
 USER user
 
+COPY ./HienAsianFood .
+
 CMD ['npm', 'run', 'dev']
