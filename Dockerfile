@@ -6,13 +6,7 @@ RUN apt-get update && apt-get install -y curl bash-completion sudo git && rm -rf
 RUN mkdir /app
 WORKDIR /app
 
-# Create a non-root user and switch to it
-RUN adduser --disabled-password --gecos '' --shell /bin/bash user && chown -R user:user /app
-RUN echo "user ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/90-user
-RUN chmod 777 /opt
-
-USER user
-
 COPY ./HienAsianFood .
+RUN npm install
 
-CMD ['npm', 'run', 'dev']
+CMD ["npm", "run", "dev"]
